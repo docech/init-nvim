@@ -41,11 +41,18 @@ return require('packer').startup(function(use)
     end,
   }
   use("nvim-treesitter/playground")
+  use("nvim-treesitter/nvim-treesitter-context");
   --use("theprimeagen/harpoon")
   --use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
-  --use("tpope/vim-fugitive")
-  use("nvim-treesitter/nvim-treesitter-context");
+  use("tpope/vim-fugitive")
+  
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
 
   use {
       'VonHeikemen/lsp-zero.nvim',
@@ -82,6 +89,21 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+        require("lualine").setup {
+ options = {
+        icons_enabled = false,
+        theme = 'auto',
+        component_separators = '|',
+        section_separators = '',
+      },
+        }
+    end
+  }
+
   --use("folke/zen-mode.nvim")
   --use("github/copilot.vim")
   --use("eandrju/cellular-automaton.nvim")
